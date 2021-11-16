@@ -21,17 +21,20 @@ for l in videos:
 
     for i in range(1,3):
         try:
-             driver.get(toget)
+            driver.get(toget)
             # driver.switch_to_window(driver.window_handles[0])
 
             driver.refresh()
             html = driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
-            commas = str(html).split(">")
-            for line in commas:            
+            brackets = str(html).split(">")
+            commas = str(html).split(",")
+            for line in brackets:            
                 if('meta name=\"keywords\"' in str(line)):
                     line_sub = line[22:]
-                    # print(l,"||", line)
                     print(l,"||", line_sub)
+            for line in commas:            
+                if('adVideoId"' in str(line)):
+                    print(l,"||", line)
 
             #print(html)
             time.sleep(5)
