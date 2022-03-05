@@ -21,7 +21,6 @@ for l in videos:
     for i in range(1,2):
         try:
             driver.get(toget)
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             html = driver.page_source
             print(str(html))
 
